@@ -1,0 +1,5 @@
+name: Onewayportals
+version: '${project.version}'
+main: ca.caustic.onewayportals.cacausticonewayportals.CaCausticOnewayportals
+api-version: 1.17
+description: One Way Minecraft Portals

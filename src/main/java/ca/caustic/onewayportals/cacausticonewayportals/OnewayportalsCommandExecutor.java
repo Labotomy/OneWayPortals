@@ -1,5 +1,8 @@
 package ca.caustic.onewayportals.cacausticonewayportals;
 
+// Need Bukkit plugin file access
+import org.bukkit.plugin.PluginDescriptionFile;
+
 // Jetbrains Annotations
 import org.jetbrains.annotations.NotNull;
 
@@ -31,7 +34,7 @@ public class OnewayportalsCommandExecutor implements CommandExecutor {
             }
             case "version" -> {
                 // Second skeleton command loosely based on version
-                sender.sendMessage("Version Command Sent " + whatCommand);
+                sender.sendMessage("One Way Portals Version is currently: " + plugin.getDescription().getVersion());
                 // return true
                 yield "version";
             }

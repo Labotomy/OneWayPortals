@@ -1,4 +1,4 @@
-name: Onewayportals
+name: OneWayPortals
 version: '${project.version}'
 main: ca.caustic.onewayportals.cacausticonewayportals.CaCausticOnewayportals
 api-version: 1.17

@@ -19,28 +19,25 @@ public class OnewayportalsCommandExecutor implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, @NotNull String label, String[] args) {
         // If the player typed /basic then do the following, note: If you only registered this executor for one command, you don't need this
-      //  if (cmd.getName().equalsIgnoreCase("basic")) {
-      //      // doSomething
-     //       return true;
-      //  } //If this has happened the function will return true.
-        // If this hasn't happened the value of false will be returned.
+        // Command string holder
         String whatCommand = cmd.getName();
-
+        // Convert our string to lower case and switch through the options. No point in wasting time on testing.
         whatCommand = switch(cmd.getName().toLowerCase()){
             case "basic" -> {
-                // do something
+                // Our basic example test command
                 sender.sendMessage("Basic Command Sent");
                 // return true
                 yield "basic";
             }
             case "version" -> {
-                // do something
+                // Second skeleton command loosely based on version
                 sender.sendMessage("Version Command Sent " + whatCommand);
                 // return true
                 yield "version";
             }
             default -> {
-                // nothing happened return false
+                // This should be the fallback, however this is not working
+                // #TODO sort out why the default is not picking up invalid commands. Suspect it has to do with how they are glued together. LOE
                 sender.sendMessage("No valid command was sent");
                 yield "false";
             }

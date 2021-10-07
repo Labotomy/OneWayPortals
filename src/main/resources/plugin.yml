@@ -3,3 +3,14 @@ version: '${project.version}'
 main: ca.caustic.onewayportals.cacausticonewayportals.CaCausticOnewayportals
 api-version: 1.17
 description: One Way Minecraft Portals
+commands:
+  basic:
+    description: This is a a basic demo command.
+    usage: /<command> [player]
+    permission: <plugin name>.basic
+    permission-message: You don't have <permission>
+  version:
+    description: This is a version command.
+    usage: /<command> [player]
+    permission: <plugin name>.version
+    permission-message: You don't have <permission>

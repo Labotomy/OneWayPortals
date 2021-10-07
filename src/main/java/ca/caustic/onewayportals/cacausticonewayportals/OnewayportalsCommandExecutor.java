@@ -1,9 +1,12 @@
 package ca.caustic.onewayportals.cacausticonewayportals;
 
+// Jetbrains Annotations
+import org.jetbrains.annotations.NotNull;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+
 
 // Example Command Class
 public class OnewayportalsCommandExecutor implements CommandExecutor {
@@ -14,7 +17,7 @@ public class OnewayportalsCommandExecutor implements CommandExecutor {
     }
 
     @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+    public boolean onCommand(CommandSender sender, Command cmd, @NotNull String label, String[] args) {
         // If the player typed /basic then do the following, note: If you only registered this executor for one command, you don't need this
       //  if (cmd.getName().equalsIgnoreCase("basic")) {
       //      // doSomething

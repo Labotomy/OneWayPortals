@@ -31,14 +31,14 @@ public class OnewayportalsCommandExecutor implements CommandExecutor {
         // Since we may have more than one name in the lists
         PluginDescriptionFile pdf = plugin.getDescription();
         // Command string holder
-        // String whatCommand = cmd.getName(); roll into the switch
         // Convert our string to lower case and switch through the options. No point in wasting time on testing.
         String whatCommand = switch(cmd.getName().toLowerCase()){
             case "authors" -> {
                 // Authors information command loosely based on version
                 // #todo still broken
                 sender.sendMessage("pre-auth");
-                sender.sendMessage("One Way Portals authors are currently: " + getAuthors(pdf));
+                //sender.sendMessage("One Way Portals authors are currently: " + getAuthors(pdf));
+                sender.sendMessage("One Way Portals authors are currently: " + getStrList(pdf, "authors"));
                 sender.sendMessage("post-auth");
                 // return true
                 yield "authors";
@@ -67,25 +67,33 @@ public class OnewayportalsCommandExecutor implements CommandExecutor {
     }
 
 
+
+
+    // Generically get all plugin string list items
     // supposedly from bukkit versioncommand
-    private String getAuthors(final PluginDescriptionFile desc) {
+    private String getStrList(final PluginDescriptionFile desc,  @NotNull String label) {
         StringBuilder result = new StringBuilder();
-        List<String> authors = desc.getAuthors();
-        for (int i = 0; i < authors.size(); i++) {
+        List<String> strListHolder;
+
+        if(label.equals("authors")) {
+            strListHolder = desc.getAuthors();
+        } else {
+            strListHolder = desc.getContributors();
+        }
+        for (int i = 0; i < strListHolder.size(); i++) {
             if (result.length() > 0) {
                 result.append(ChatColor.WHITE);
-                if (i < authors.size() - 1) {
+                if (i < strListHolder.size() - 1) {
                     result.append(", ");
                 } else {
                     result.append(" and ");
                 }
             }
             result.append(ChatColor.GREEN);
-            result.append(authors.get(i));
+            result.append(strListHolder.get(i));
         }
         return result.toString();
     }
-
 
 }
 

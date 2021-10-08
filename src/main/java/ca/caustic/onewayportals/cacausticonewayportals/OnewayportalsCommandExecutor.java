@@ -42,6 +42,11 @@ public class OnewayportalsCommandExecutor implements CommandExecutor {
                 sender.sendMessage("post-auth");
                 // return true
                 yield "authors";
+            }
+            case "contributors" -> {
+                // Contributors information command
+                sender.sendMessage("One Way Portals contributors are currently: " + getStrList(pdf, "contributors"));
+                yield "authors";
             }case "basic" -> {
                 // Our basic example test command
                 sender.sendMessage("Basic Command Sent");

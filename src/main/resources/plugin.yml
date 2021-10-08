@@ -4,7 +4,7 @@ main: ca.caustic.onewayportals.cacausticonewayportals.CaCausticOnewayportals
 api-version: 1.17
 description: One Way Minecraft Portals
 authors: [LowOnEspresso]
-contributors: [pending]
+contributors: [G.Reaper, Tyler]
 prefix: OWPortals-
 
 commands:
@@ -12,6 +12,11 @@ commands:
     description: Who has authored parts of OneWayPortals.
     usage: /<command>
     permission: <plugin name>.authors
+    permission-message: You don't have <permission>
+  contributors:
+    description: Who has contributed to parts of OneWayPortals.
+    usage: /<command>
+    permission: <plugin name>.contributors
     permission-message: You don't have <permission>
   basic:
     description: This is a a basic demo command.

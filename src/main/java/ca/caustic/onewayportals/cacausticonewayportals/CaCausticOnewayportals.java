@@ -32,6 +32,7 @@ public final class CaCausticOnewayportals extends JavaPlugin {
         // This will throw a NullPointerException if you don't have the command defined in your plugin.yml file!
         Objects.requireNonNull(this.getCommand("authors")).setExecutor(new OnewayportalsCommandExecutor(this));
         Objects.requireNonNull(this.getCommand("basic")).setExecutor(new OnewayportalsCommandExecutor(this));
+        Objects.requireNonNull(this.getCommand("contributors")).setExecutor(new OnewayportalsCommandExecutor(this));
         Objects.requireNonNull(this.getCommand("version")).setExecutor(new OnewayportalsCommandExecutor(this));
 
 

@@ -1,10 +1,16 @@
 package ca.caustic.onewayportals.cacausticonewayportals;
 
 // Need Bukkit plugin file access
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginDescriptionFile;
+import org.bukkit.ChatColor;
+
+import org.bukkit.command.defaults.VersionCommand;
 
 // Jetbrains Annotations
 import org.jetbrains.annotations.NotNull;
+// General Java
+import java.util.List;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -22,11 +28,21 @@ public class OnewayportalsCommandExecutor implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, @NotNull String label, String[] args) {
         // If the player typed /basic then do the following, note: If you only registered this executor for one command, you don't need this
+        // Since we may have more than one name in the lists
+        PluginDescriptionFile pdf = plugin.getDescription();
         // Command string holder
         String whatCommand = cmd.getName();
         // Convert our string to lower case and switch through the options. No point in wasting time on testing.
         whatCommand = switch(cmd.getName().toLowerCase()){
-            case "basic" -> {
+            case "authors" -> {
+                // Authors information command loosely based on version
+                // #todo still broken
+                sender.sendMessage("pre-auth");
+                sender.sendMessage("One Way Portals authors are currently: " + getAuthors(pdf));
+                sender.sendMessage("post-auth");
+                // return true
+                yield "authors";
+            }case "basic" -> {
                 // Our basic example test command
                 sender.sendMessage("Basic Command Sent");
                 // return true
@@ -40,13 +56,38 @@ public class OnewayportalsCommandExecutor implements CommandExecutor {
             }
             default -> {
                 // This should be the fallback, however this is not working
-                // #TODO sort out why the default is not picking up invalid commands. Suspect it has to do with how they are glued together. LOE
+                // #TODO sort out why the default is not picking up invalid commands. Suspect it has to do with how they are glued together or that bukkit has a handler that ignores. LOE
                 sender.sendMessage("No valid command was sent");
                 yield "false";
             }
         }; // End of Case L switch
-
-        sender.sendMessage("Command Sent was " + whatCommand);
+        // Command verification Debugging - Case L switch result, it is assigned to whatCommand via yield
+        sender.sendMessage("OWPortals DEBUG Command Sent was " + whatCommand);
         return false;
     }
+
+
+    // supposedly from bukkit versioncommand
+    private String getAuthors(final PluginDescriptionFile desc) {
+        StringBuilder result = new StringBuilder();
+        List<String> authors = desc.getAuthors();
+        for (int i = 0; i < authors.size(); i++) {
+            if (result.length() > 0) {
+                result.append(ChatColor.WHITE);
+                if (i < authors.size() - 1) {
+                    result.append(", ");
+                } else {
+                    result.append(" and ");
+                }
+            }
+            result.append(ChatColor.GREEN);
+            result.append(authors.get(i));
+        }
+        return result.toString();
+    }
+
+
 }
+
+
+

@@ -28,7 +28,9 @@ public final class CaCausticOnewayportals extends JavaPlugin {
     public void onEnable() {
         // Plugin startup logic
         getLogger().info("onEnable has been invoked for OneWayPortals!");
+        // Register our commands!
         // This will throw a NullPointerException if you don't have the command defined in your plugin.yml file!
+        Objects.requireNonNull(this.getCommand("authors")).setExecutor(new OnewayportalsCommandExecutor(this));
         Objects.requireNonNull(this.getCommand("basic")).setExecutor(new OnewayportalsCommandExecutor(this));
         Objects.requireNonNull(this.getCommand("version")).setExecutor(new OnewayportalsCommandExecutor(this));
 

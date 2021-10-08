@@ -31,9 +31,9 @@ public class OnewayportalsCommandExecutor implements CommandExecutor {
         // Since we may have more than one name in the lists
         PluginDescriptionFile pdf = plugin.getDescription();
         // Command string holder
-        String whatCommand = cmd.getName();
+        // String whatCommand = cmd.getName(); roll into the switch
         // Convert our string to lower case and switch through the options. No point in wasting time on testing.
-        whatCommand = switch(cmd.getName().toLowerCase()){
+        String whatCommand = switch(cmd.getName().toLowerCase()){
             case "authors" -> {
                 // Authors information command loosely based on version
                 // #todo still broken

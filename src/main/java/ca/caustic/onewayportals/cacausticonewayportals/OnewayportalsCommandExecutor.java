@@ -46,7 +46,7 @@ public class OnewayportalsCommandExecutor implements CommandExecutor {
             case "contributors" -> {
                 // Contributors information command
                 sender.sendMessage("One Way Portals contributors are currently: " + getStrList(pdf, "contributors"));
-                yield "authors";
+                yield "contributors";
             }case "basic" -> {
                 // Our basic example test command
                 sender.sendMessage("Basic Command Sent");

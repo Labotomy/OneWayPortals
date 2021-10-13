@@ -6,7 +6,7 @@
 
     <groupId>ca.caustic.onewayportals</groupId>
     <artifactId>ca-caustic-onewayportals</artifactId>
-    <version>0.0.8-TacoStand</version>
+    <version>0.0.9-TacoStand</version>
     <packaging>jar</packaging>
 
     <name>Ca Caustic Onewayportals</name>

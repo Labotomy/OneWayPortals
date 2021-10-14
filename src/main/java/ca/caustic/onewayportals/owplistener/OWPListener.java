@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Objects;
 
 import org.bukkit.Bukkit;
+import org.bukkit.util.Vector;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.block.BlockState;
 import org.bukkit.event.block.*;
@@ -25,6 +26,7 @@ public class OWPListener implements Listener {
     List<BlockState> lstBlockList = new ArrayList<BlockState>();            // Lets try strings first
     String strBlock1Test = "Not a String";
     List<Integer> lstBlockTestCoord = new ArrayList<Integer>(3);
+    List<Vector> lstBoundingBoxList =  new ArrayList<Vector>(3);
     String strWorld = "Not a String";
     String strEntity = "Not a String";
     String strReason = "Not a String";
@@ -40,6 +42,7 @@ public class OWPListener implements Listener {
         lstBlockTestCoord.add(lstBlockList.get(1).getBlock().getX());
         lstBlockTestCoord.add(lstBlockList.get(1).getBlock().getY());
         lstBlockTestCoord.add(lstBlockList.get(1).getBlock().getZ());
+        lstBoundingBoxList.add(lstBlockList.get(0).getBlock().getBoundingBox().getCenter());
 
 
         strWorld = event.getWorld().toString();       // Get the world we are in
@@ -51,7 +54,11 @@ public class OWPListener implements Listener {
         // Gives object addresses Bukkit.getLogger().info("BlockList Barf?: " + lstBlockList.toString() + " !");
         Bukkit.getLogger().info("BlockList 1 Test - should be Type: " + strBlock1Test + " !");
         Bukkit.getLogger().info("BlockList 1 Test - should be Block 1 Coordinates: " +  lstBlockTestCoord.get(0).toString() +  "," + lstBlockTestCoord.get(1).toString() +  "," + lstBlockTestCoord.get(2).toString() +  " !");
+        Bukkit.getLogger().info("BoundingBox Center Test - should be center Coordinates: " + lstBoundingBoxList.toString() +" !");
 
+        // Unexpected adding to Lists, clear just in case
+        lstBlockTestCoord.clear();
+        lstBoundingBoxList.clear();
 
         //event.getWorld().
     }

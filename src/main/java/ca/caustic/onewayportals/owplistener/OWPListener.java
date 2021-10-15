@@ -1,6 +1,7 @@
 package ca.caustic.onewayportals.owplistener;
 
 import ca.caustic.onewayportals.cacausticonewayportals.CaCausticOnewayportals;
+import ca.caustic.onewayportals.OWPPortalDestruction;
 
 // Need core Java list access
 import java.util.ArrayList;
@@ -9,7 +10,9 @@ import java.util.List;
 import java.util.Objects;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.util.Vector;
+import org.bukkit.block.Block;
 import org.bukkit.block.data.BlockData;
 import org.bukkit.block.BlockState;
 import org.bukkit.event.block.*;
@@ -23,6 +26,7 @@ import org.bukkit.event.world.PortalCreateEvent;                    // Called wh
 // need to add instance for access to the plugin to use the logger
 public class OWPListener implements Listener {
     public CaCausticOnewayportals plugin;
+
     List<BlockState> lstBlockList = new ArrayList<BlockState>();            // Lets try strings first
     String strBlock1Test = "Not a String";
     List<Integer> lstBlockTestCoord = new ArrayList<Integer>(3);
@@ -69,10 +73,23 @@ Integer counter= 0;
         }
         Bukkit.getLogger().info("Number of Positions: " + counter + ", Block Centers: " + lstBoundingBoxList.toString() + " !");
 
+        // Crude and Rude to see what Happens
+        if(strReason.equals("NETHER_PAIR")) {
+            // should double wrap this test lstBlockList.get(0).getBlock().getType()
+            // lstBlockList.get(0).getBlock().setType(Material.GLOWSTONE);
+            Bukkit.getLogger().info("Entered condition NETHER_PAIR");
+            OWPPortalDestruction.
+                    owpPortalDestructioon(lstBlockList.get(0).getBlock());
+        }
+
         // Need to sanitize our holders while they are class-wide
         lstBlockTestCoord.clear();
         lstBoundingBoxList.clear();
 
         //event.getWorld().
     }
+
+
+
+
 }

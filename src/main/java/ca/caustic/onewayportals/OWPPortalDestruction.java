@@ -6,10 +6,9 @@ import org.bukkit.block.Block;
 
 public class OWPPortalDestruction {
 
-    public static void owpPortalDestructioon(Block block) {
-    }
+    public static boolean owpPortalDestructioon(Block centerBlock) {
 
-    public boolean owpPortalDestruction(Block centerBlock) {
+        Bukkit.getLogger().info("Entered Function");
         // Crude and Rude to see what Happens
         // should double wrap this test lstBlockList.get(0).getBlock().getType()
         centerBlock.setType(Material.GLOWSTONE);

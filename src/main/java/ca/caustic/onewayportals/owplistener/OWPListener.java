@@ -78,8 +78,10 @@ Integer counter= 0;
             // should double wrap this test lstBlockList.get(0).getBlock().getType()
             // lstBlockList.get(0).getBlock().setType(Material.GLOWSTONE);
             Bukkit.getLogger().info("Entered condition NETHER_PAIR");
-            OWPPortalDestruction.
-                    owpPortalDestructioon(lstBlockList.get(0).getBlock());
+            // is this working?
+            OWPPortalDestruction.owpPortalDestructioon(lstBlockList.get(0).getBlock());
+            Bukkit.getLogger().info("After Function");
+
         }
 
         // Need to sanitize our holders while they are class-wide

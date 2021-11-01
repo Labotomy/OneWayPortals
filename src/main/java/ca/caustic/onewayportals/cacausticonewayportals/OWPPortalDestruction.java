@@ -31,7 +31,7 @@ public class OWPPortalDestruction {
                 Bukkit.broadcastMessage("This message is shown after we change the block to glowstone");
 
             }
-        }.runTaskLater(whatInstance, 20L);   // Your plugin instance, the time to be delayed.
+        }.runTaskLater(whatInstance, 40L);   // Your plugin instance, the time to be delayed.
 
         // centerBlock.setType(Material.GLOWSTONE);
         // lstBlockList.get(0).getBlock().setType(Material.GLOWSTONE);

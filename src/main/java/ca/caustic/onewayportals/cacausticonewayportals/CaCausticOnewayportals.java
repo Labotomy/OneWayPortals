@@ -38,10 +38,13 @@ import java.util.Objects;
 public final class CaCausticOnewayportals extends JavaPlugin {
     // Need an event handler to listen for the portals
     private static final HandlerList handlers = new HandlerList();
+    private static CaCausticOnewayportals plugin;
+    private static CaCausticOnewayportals instance;
 
     @Override
     public void onEnable() {
         // Plugin startup logic
+        instance = this; // Create and assign plugin instance access
         getLogger().info("onEnable has been invoked for OneWayPortals!");
         // Register our commands!
         // This will throw a NullPointerException if you don't have the command defined in your plugin.yml file!
@@ -71,6 +74,12 @@ public final class CaCausticOnewayportals extends JavaPlugin {
     public static HandlerList getHandlerList() {
         return handlers;
     }
+
+    public static CaCausticOnewayportals getPlugin() {
+        return plugin;
+    }
+
+    public static CaCausticOnewayportals getInstance(){ return instance; }
 
 }
 

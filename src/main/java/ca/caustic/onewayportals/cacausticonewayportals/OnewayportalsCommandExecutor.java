@@ -59,6 +59,7 @@ public class OnewayportalsCommandExecutor implements CommandExecutor {
             default -> {
                 // This should be the fallback, however this is not working
                 // #TODO sort out why the default is not picking up invalid commands. Suspect it has to do with how they are glued together or that bukkit has a handler that ignores. LOE
+                //  git.entryrise.com/stefatorus/LagAssist/src/branch/master/src/com/entryrise/lagassist/cmd/CommandListener.java   elesif heavy but doew show between player and op
                 sender.sendMessage("No valid command was sent");
                 yield "false";
             }

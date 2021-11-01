@@ -1,21 +1,18 @@
 package ca.caustic.onewayportals.owplistener;
 
 import ca.caustic.onewayportals.cacausticonewayportals.CaCausticOnewayportals;
-import ca.caustic.onewayportals.OWPPortalDestruction;
+import ca.caustic.onewayportals.cacausticonewayportals.OWPPortalDestruction;
 
 // Need core Java list access
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
 import org.bukkit.util.Vector;
-import org.bukkit.block.Block;
-import org.bukkit.block.data.BlockData;
 import org.bukkit.block.BlockState;
-import org.bukkit.event.block.*;
+import org.bukkit.Material;
+import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.plugin.java.JavaPlugin;
 
 // Import Master Bukkit versions
@@ -25,7 +22,7 @@ import org.bukkit.event.world.PortalCreateEvent;                    // Called wh
 
 // need to add instance for access to the plugin to use the logger
 public class OWPListener implements Listener {
-    public CaCausticOnewayportals plugin;
+    private static CaCausticOnewayportals plugin;
 
     List<BlockState> lstBlockList = new ArrayList<BlockState>();            // Lets try strings first
     String strBlock1Test = "Not a String";
@@ -68,6 +65,7 @@ Integer counter= 0;
 
         lstBoundingBoxList.clear();
         while(!lstBlockList.get(counter).getBlock().isEmpty()){
+            // #TODO There is an issue in this loop if preconditions.java gets called - suspect the delay is longer while the platform or airspace is made
             lstBoundingBoxList.add(lstBlockList.get(counter).getBlock().getBoundingBox().getCenter());
             counter++;
         }
@@ -79,12 +77,41 @@ Integer counter= 0;
             // lstBlockList.get(0).getBlock().setType(Material.GLOWSTONE);
             Bukkit.getLogger().info("Entered condition NETHER_PAIR");
             // is this working?
-            OWPPortalDestruction.owpPortalDestructioon(lstBlockList.get(0).getBlock());
+
+            new OWPPortalDestruction().owpPortalDestruction( lstBlockList.get(0).getBlock() );
+
+          /*  Bukkit.getScheduler().scheduleSyncDelayedTask(CaCausticOnewayportals.getPlugin(), new Runnable() {
+                @Override
+                public void run() {
+                    // Do something
+                    lstBlockList.get(0).getBlock().setType(Material.GLOWSTONE);
+                }
+            }, 20L);
+*/
+
+/*
+           *** Working ***
+           new BukkitRunnable() {
+
+                @Override
+                public void run() {
+                    //The code inside will be executed in {timeInTicks} ticks.
+                    Bukkit.broadcastMessage("This message is shown after one second");
+                    lstBlockList.get(0).getBlock().setType(Material.GLOWSTONE);
+                    Bukkit.broadcastMessage("This message is shown after we change the block to glowstone");
+
+                }
+            }.runTaskLater(CaCausticOnewayportals.getInstance(), 20L);   // Your plugin instance, the time to be delayed.
+*/
+
             Bukkit.getLogger().info("After Function");
+
 
         }
 
         // Need to sanitize our holders while they are class-wide
+        lstBoundingMinList.clear();
+        lstBoundingMaxList.clear();
         lstBlockTestCoord.clear();
         lstBoundingBoxList.clear();
 
